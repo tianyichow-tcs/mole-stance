@@ -47,6 +47,7 @@ class BaseLoader:
 
 class StanceLoader(BaseLoader):
     def _prepare_splits(self, dataset_path, task_name):
+        print("datapath:--------------->",dataset_path)
         train = pd.read_json(dataset_path / f"{task_name}_train.json", lines=True).copy()
         val = pd.read_json(dataset_path / f"{task_name}_dev.json", lines=True).copy()
         test = pd.read_json(dataset_path / f"{task_name}_test.json", lines=True).copy()

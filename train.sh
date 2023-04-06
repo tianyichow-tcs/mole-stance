@@ -1,0 +1,24 @@
+#!/bin/sh
+python src/stancedetection/models/trainer.py --data_dir "data/all/" \
+        --model_name_or_path ${MODEL_NAME} \
+        --output_dir ${OUTPUT_DIR} \
+        --task_names ${datasets[@]} \
+        --do_train \
+        --do_eval \
+        --model_type lel \
+        --learning_rate ${LEARNING_RATE} \
+        --weight_decay 0.01 \
+        --per_gpu_train_batch_size 64 \
+        --per_gpu_eval_batch_size 256 \
+        --replace_classification \
+        --num_train_epochs ${EPOCHS} \
+        --warmup_proportion ${WARMUP} \
+        --adam_epsilon 1e-08 \
+        --log_on_epoch \
+        --max_seq_length ${MAX_SEQ_LEN} \
+        --evaluate_during_training \
+        --gradient_accumulation_steps 1 \
+        --seed ${SEED} \
+        --fp16 \
+        --cache_dir cache \
+        --overwrite_output_dir
